@@ -27,4 +27,14 @@ class Piece {
         $this->row = $row;
         $this->col = $col;
     }
+
+    public function getIcon() {
+        $colorPrefix = $this->color === 'white' ? 'White' : 'Black';
+        $pieceType = ucfirst(strtolower(get_class($this)));
+
+        // Assuming the images are stored in htdocs/images
+        $iconPath = "/images/{$colorPrefix}{$pieceType}.svg"; // Updated path
+
+        return $iconPath;
+    }
 }

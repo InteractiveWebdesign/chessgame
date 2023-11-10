@@ -1,7 +1,9 @@
 <?php
 
+// htdocs/models/Pawn.php
+
 class Pawn extends Piece {
-    public function __construct($color, $row, $col) {
+    public function __construct($color, $row = null, $col = null) {
         parent::__construct($color, $row, $col);
     }
 
