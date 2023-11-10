@@ -18,6 +18,25 @@ Reuse Code: Inheritance allows a class to inherit the properties and methods of 
 
 One Interface, Many Implementations: Polymorphism allows objects of different classes to be treated as objects of a common base class. In this project, polymorphism is used to create a consistent interface for all chess pieces. For instance, you might define a common method like move in the base Piece class, and each specific piece class (Pawn, Rook, etc.) can implement this method in its own way.
 
+### Steps taken so far
+
+Create MVC model
+Create index page
+Created the board
+Create the classes
+Create the icons and load them into the board
+Created layout
+Created player action commentary with (hard coded demo) messages
+Created session handler
+Created session based player names
+Implemented game logic for the classed
+
+### Todo
+Implement session turn based gameplay
+Implement commentary for gameplay
+Implement movement of pawns
+Implement and reinforce the gamerules
+
 
 
 ### Overview
