@@ -16,7 +16,7 @@ class Chessboard {
         for ($row = 0; $row < 8; $row++) {
             echo '<tr>';
             for ($col = 0; $col < 8; $col++) {
-                $color = ($row + $col) % 2 == 0 ? 'bg-white' : 'bg-black';
+                $color = ($row + $col) % 2 == 0 ? 'bg-gray-200' : 'bg-gray-400';
                 $piece = $this->board[$row][$col];
                 echo '<td class="w-10 h-10 ' . $color . '">';
                 if ($piece) {
@@ -30,6 +30,7 @@ class Chessboard {
         echo '</div>';
         echo '</div>';
     }
+
 
     public function resetBoard() {
         // Initialize the board with pieces in the starting positions
