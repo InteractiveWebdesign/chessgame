@@ -2,6 +2,24 @@
 
 <h1 align="center">Chess Board</h1>
 
+### Goals
+
+I want to use the OOP principles Encapsulation, Inheritance and Polymorphism in this project.Also I want to use the MVC model to organize the code in this project.
+
+- Encapsulation:
+
+Hide Implementation Details: Encapsulation involves bundling the data (attributes) and the methods (functions) that operate on the data into a single unit, i.e., a class. In this project, we will encapsulate the internal details of each chess piece within its respective class, allowing to hide the complexity of the piece's behavior from the rest of the program.
+
+- Inheritance:
+
+Reuse Code: Inheritance allows a class to inherit the properties and methods of another class. In this project, inheritance is used to create a hierarchy of chess piece classes. For example, a Pawn class can inherit from a generic Piece class. This way, you can reuse common functionality from the base class while allowing specific pieces to have their own unique behavior.
+
+- Polymorphism:
+
+One Interface, Many Implementations: Polymorphism allows objects of different classes to be treated as objects of a common base class. In this project, polymorphism is used to create a consistent interface for all chess pieces. For instance, you might define a common method like move in the base Piece class, and each specific piece class (Pawn, Rook, etc.) can implement this method in its own way.
+
+
+
 ### Overview
 
 This project implements a chess game using PHP following the MVC (Model-View-Controller) architecture with Object-Oriented Programming (OOP) principles.
