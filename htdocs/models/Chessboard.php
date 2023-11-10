@@ -11,7 +11,7 @@ class Chessboard {
     public function displayBoard() {
         // Display the current state of the chessboard with Tailwind CSS styling
         echo '<div class="flex justify-center items-center h-screen">';
-        echo '<div class="bg-gray-100 p-8 rounded-md w-80">';
+        echo '<div class="bg-gray-100 p-8 rounded-md">';
         echo '<table class="table-auto border-collapse w-full">';
         for ($row = 0; $row < 8; $row++) {
             echo '<tr>';
