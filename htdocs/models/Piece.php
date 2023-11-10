@@ -4,7 +4,7 @@ class Piece {
     private $color;
     private $row;
     private $col;
-
+    
     public function __construct($color, $row, $col) {
         $this->color = $color;
         $this->row = $row;
