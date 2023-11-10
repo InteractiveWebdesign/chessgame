@@ -6,6 +6,8 @@
 
 I want to use the OOP principles Encapsulation, Inheritance and Polymorphism in this project.Also I want to use the MVC model to organize the code in this project.
 
+I will make sure all the components are used by the time I finish my course about this chess game project for beginner and mediore programmers.
+
 - Encapsulation:
 
 Hide Implementation Details: Encapsulation involves bundling the data (attributes) and the methods (functions) that operate on the data into a single unit, i.e., a class. In this project, we will encapsulate the internal details of each chess piece within its respective class, allowing to hide the complexity of the piece's behavior from the rest of the program.
@@ -37,6 +39,9 @@ Implement commentary for gameplay
 Implement movement of pawns
 Implement and reinforce the gamerules
 
+
+### Ideas
+Make funny chess qoutes in the UI
 
 
 ### Overview
