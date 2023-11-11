@@ -2,7 +2,7 @@
 
 class King extends Piece {
     public function __construct($color, $row = null, $col = null) {
-        parent::__construct($color, $row, $col);
+        parent::__construct($color, $row, $col, 'King');
     }
 
     // Check if the king's move is valid

@@ -4,11 +4,17 @@ class Piece {
     private $color;
     private $row;
     private $col;
+    private $name;
     
-    public function __construct($color, $row, $col) {
+    public function __construct($color, $row, $col, $name) {
         $this->color = $color;
         $this->row = $row;
         $this->col = $col;
+        $this->name = $name;
+    }
+
+    public function getName() {
+        return $this->name;
     }
 
     public function getColor() {

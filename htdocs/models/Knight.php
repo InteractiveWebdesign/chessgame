@@ -2,7 +2,7 @@
 
 class Knight extends Piece {
     public function __construct($color, $row = null, $col = null) {
-        parent::__construct($color, $row, $col);
+        parent::__construct($color, $row, $col, 'Knight');
     }
 
     // Check if the knight's move is valid

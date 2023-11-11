@@ -3,7 +3,7 @@
 class Bishop extends Piece {
     
     public function __construct($color, $row = null, $col = null) {
-        parent::__construct($color, $row, $col);
+        parent::__construct($color, $row, $col, 'Bishop');
     }
 
     // Check if the bishop's move is valid

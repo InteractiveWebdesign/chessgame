@@ -16,6 +16,8 @@ Hide Implementation Details: Encapsulation involves bundling the data (attribute
 
 Reuse Code: Inheritance allows a class to inherit the properties and methods of another class. In this project, inheritance is used to create a hierarchy of chess piece classes. For example, a Pawn class can inherit from a generic Piece class. This way, you can reuse common functionality from the base class while allowing specific pieces to have their own unique behavior.
 
+Pieces have similiar attributes that can be shared accross all pieces by using inheritance. Sub classes inheritance from the Piece.php class.
+
 - Polymorphism:
 
 One Interface, Many Implementations: Polymorphism allows objects of different classes to be treated as objects of a common base class. In this project, polymorphism is used to create a consistent interface for all chess pieces. For instance, you might define a common method like move in the base Piece class, and each specific piece class (Pawn, Rook, etc.) can implement this method in its own way.
