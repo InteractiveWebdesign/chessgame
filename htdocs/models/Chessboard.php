@@ -134,21 +134,41 @@ class Chessboard
     }
 
     // Show the current positions of all pieces on the board in the UI
-     // Show the current positions of all pieces on the board in the UI
-     public function displayPiecePositionsByPlayer($player)
-     {
-         echo '<h2>' . ucfirst($player) . ' Player</h2>';
- 
-         foreach ($this->squares as $column => $columns) {
-             foreach ($columns as $row => $square) {
-                 $piece = $square->getPiece();
-                 if ($piece && $piece->getColor() === $player) {
-                     echo $piece->getType() . ' at ' . $column . $row . '<br>';
-                 }
-             }
-         }
-     }
+    public function displayPiecePositionsByPlayer($player)
+    {
+        echo '<h2 class="text-lg font-bold mb-2">' . ucfirst($player) . ' Player</h2>';
+        echo '<table class="table-auto w-full bg-white shadow-lg rounded-lg mb-4">';
+        echo '<thead class="bg-blue-500 text-white rounded-lg">';
+        echo '<tr>';
+        echo '<th class="px-4 py-2 rounded-tl-lg">Piece</th>';
+        echo '<th class="px-4 py-2 rounded-tr-lg text-center">Position</th>';
+        echo '</tr>';
+        echo '</thead>';
+        echo '<tbody>';
 
-    // Additional methods to handle piece movements and interactions on the board
+        foreach ($this->squares as $column => $columns) {
+            foreach ($columns as $row => $square) {
+                $piece = $square->getPiece();
+                if ($piece && $piece->getColor() === $player) {
+                    echo '<tr class="hover:bg-gray-200 transition ease-in-out duration-150">';
+
+                    // Add .svg icon before the piece name
+                    echo '<td class="px-4 py-2 flex items-center">';
+                    echo '<img src="' . $piece->getIcon() . '" alt="" class="w-6 h-6 mr-2">';
+                    echo $piece->getName();
+                    echo '</td>';
+
+                    // Echo the piece position
+                    echo '<td class="px-4 py-2 text-center">' . $column . $row . '</td>';
+
+                    echo '</tr>';
+                }
+            }
+        }
+
+        echo '</tbody>';
+        echo '</table>';
+    }
 }
+
 ?>

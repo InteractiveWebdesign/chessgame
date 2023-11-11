@@ -1,4 +1,7 @@
 <?php
+// Start the session
+session_start();
+
 // Game relared classes
 require_once 'models/Chessboard.php';
 require_once 'models/Piece.php';
@@ -12,8 +15,8 @@ require_once 'models/King.php';
 // Utility classes
 require_once 'SessionManager.php';
 
-// Start the session
-session_start();
+// Components from /view
+require_once 'views/header.php';
 
 // Create an instance of the Chessboard class
 $chessboard = new Chessboard();
@@ -59,10 +62,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submitPlayerTwoName']
 </div>
 
 <!-- Chessboard and Moves Column -->
-<div class="flex flex-col items-center justify-center w-3/5 p-4">
-    <h1 class="text-xl font-bold my-12">Chessboard</h1>
-        <div id="chessboard" class="chessboard"><!-- Chessboard squares will be dynamically generated here --></div>
-        <button id="startButton" class="bg-green-500 text-white px-4 py-2 rounded mt-4">Start Game</button>
+<div class="flex flex-col items-center justify-center w-4/5 p-4">
+<div id="moveLog" class="bg-blue-800 text-white flex flex-col items-center justify-center w-full p-4 rounded-t-lg">
+        <?php
+        // Fake commentary about moves (replace with actual move log)
+        $moveLogEntries = [
+            'I want game control here, who turn is it?',
+
+            // ... add more entries as needed
+        ];
+
+        foreach ($moveLogEntries as $entry) {
+            echo "<p>$entry</p>";
+        }
+        ?>
+    </div>
+    
+        
+       
 
     <?php
     // Display the chessboard
@@ -101,10 +118,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submitPlayerTwoName']
     ?>
 </div>
 
-<script>
-    // Assuming the pieces are represented by Piece objects
+<!-- <script>
     // You might want to replace this part with your actual logic for placing and displaying pieces
-    const pieces = <?php echo json_encode($chessboard->getPieces()); ?>;
+    const pieces = <?php //echo json_encode($chessboard->getPieces()); ?>;
 
     // Assuming each piece has a getIcon method
     pieces.forEach(piece => {
@@ -113,7 +129,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submitPlayerTwoName']
         img.alt = ''; // Add appropriate alt text
         document.getElementById('chessboard').appendChild(img);
     });
-</script>
+</script> -->
 
 <script src="scripts.js"></script>
 </body>

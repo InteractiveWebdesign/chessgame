@@ -7,6 +7,11 @@ class Pawn extends Piece {
         parent::__construct($color, $row, $col, 'Pawn');
     }
 
+    public function getType()
+    {
+        return 'Pawn';
+    }
+
     public function move($newRow, $newCol) {
         // Implement your specific pawn movement logic here
         // For example, you might check if the move is one square forward
