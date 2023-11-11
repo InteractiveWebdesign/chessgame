@@ -58,30 +58,42 @@ class Chessboard
         echo '<div class="bg-gray-100 rounded-md">';
         echo '<table class="table-auto border-collapse w-full">';
 
+        // Display column labels
+        echo '<tr>';
+        echo '<td></td>'; // Empty cell in the top-left corner
+        for ($col = 'A'; $col <= 'H'; $col++) {
+            echo '<td class="w-10 text-center">' . $col . '</td>';
+        }
+        echo '</tr>';
+
         for ($row = 1; $row <= 8; $row++) {
-            echo '<tr>';
+        echo '<tr>';
 
-            for ($col = 'A'; $col <= 'H'; $col++) {
-                $square = $this->squares[$col][$row];
-                $color = ((ord($square->getXPosition()) - ord('A') + $square->getYPosition()) % 2 == 0) ? 'bg-gray-200' : 'bg-gray-400';
+        // Display row label
+        echo '<td class="w-10 text-center">' . $row . '</td>';
 
-                echo '<td class="w-10 h-10 ' . $color . '">';
+        for ($col = 'A'; $col <= 'H'; $col++) {
+        $square = $this->squares[$col][$row];
+        $color = ((ord($col) - ord('A') + $row) % 2 == 0) ? 'bg-gray-200' : 'bg-gray-400';
 
-                $piece = $this->getPieceAtSquare($square);
-                if ($piece) {
-                    echo '<img src="' . $piece->getIcon() . '" alt="" class="w-full h-full">';
-                }
+        echo '<td class="w-10 h-10 ' . $color . '">';
 
-                echo '</td>';
-            }
-
-            echo '</tr>';
+        $piece = $this->getPieceAtSquare($square);
+        if ($piece) {
+            echo '<img src="' . $piece->getIcon() . '" alt="" class="w-full h-full">';
         }
 
-        echo '</table>';
-        echo '</div>';
-        echo '</div>';
+        echo '</td>';
+        }
+
+        echo '</tr>';
     }
+
+    echo '</table>';
+    echo '</div>';
+    echo '</div>';
+    }
+
 
     public function resetBoard()
     {
