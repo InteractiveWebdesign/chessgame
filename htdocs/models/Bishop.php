@@ -6,6 +6,11 @@ class Bishop extends Piece {
         parent::__construct($color, $row, $col, 'Bishop');
     }
 
+    public function getType()
+    {
+        return 'Bishop';
+    }
+
     // Check if the bishop's move is valid
     public function isValidMove($newRow, $newCol) {
         $rowDiff = abs($newRow - $this->getRow());

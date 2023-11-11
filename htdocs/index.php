@@ -15,6 +15,9 @@ require_once 'SessionManager.php';
 // Start the session
 session_start();
 
+// Create an instance of the Chessboard class
+$chessboard = new Chessboard();
+
 // Check if the form is submitted for Player One
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submitPlayerOneName'])) {
     // Update the player one name in the session
@@ -49,6 +52,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submitPlayerTwoName']
         <button type="submit" name="submitPlayerOneName" class="bg-blue-500 text-white px-4 py-2 rounded">Save</button>
     </form>
     <!-- Additional content for player one if needed -->
+    <?php 
+    // Display piece positions for Player One
+    $chessboard->displayPiecePositionsByPlayer('white');
+    ?>
 </div>
 
 <!-- Chessboard and Moves Column -->
@@ -58,15 +65,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submitPlayerTwoName']
         <button id="startButton" class="bg-green-500 text-white px-4 py-2 rounded mt-4">Start Game</button>
 
     <?php
-    // Initialize the board
-    $chessboard = new Chessboard();
+    // Display the chessboard
     $chessboard->displayBoard();
     ?>
 
     <!-- Move Log -->
     <div id="moveLog" class="bg-black text-white flex flex-col items-center justify-center w-full p-4 rounded-t-lg">
-    <!-- <div id="moveLog" class="bg-black text-white flex flex-col items-center justify-center w-2/3 p-4"> -->
-        <!-- Move log entries will be dynamically added here -->
         <?php
         // Fake commentary about moves (replace with actual move log)
         $moveLogEntries = [
@@ -91,6 +95,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submitPlayerTwoName']
         <button type="submit" name="submitPlayerTwoName" class="bg-blue-500 text-white px-4 py-2 rounded">Save</button>
     </form>
     <!-- Additional content for player two if needed -->
+    <?php 
+    // Display piece positions for Player Two
+    $chessboard->displayPiecePositionsByPlayer('black');
+    ?>
 </div>
 
 <script>

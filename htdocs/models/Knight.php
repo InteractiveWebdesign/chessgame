@@ -5,6 +5,11 @@ class Knight extends Piece {
         parent::__construct($color, $row, $col, 'Knight');
     }
 
+    public function getType()
+    {
+        return 'Knight';
+    }
+
     // Check if the knight's move is valid
     public function isValidMove($newRow, $newCol) {
         $rowDiff = abs($newRow - $this->getRow());

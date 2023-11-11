@@ -6,6 +6,11 @@ class Queen extends Piece {
         parent::__construct($color, $row, $col, 'Queen');
     }
 
+    public function getType()
+    {
+        return 'Queen';
+    }
+
     // Check if the queen's move is valid
     public function isValidMove($newRow, $newCol) {
         $rowDiff = abs($newRow - $this->getRow());

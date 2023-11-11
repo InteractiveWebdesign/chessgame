@@ -5,6 +5,11 @@ class Rook extends Piece {
         parent::__construct($color, $row, $col, 'Rook');
     }
 
+    public function getType()
+    {
+        return 'Rook';
+    }
+
     // Check if the rook's move is valid
     public function isValidMove($newRow, $newCol) {
         $rowDiff = abs($newRow - $this->getRow());

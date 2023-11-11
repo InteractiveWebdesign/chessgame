@@ -17,6 +17,12 @@ class Piece {
         return $this->name;
     }
 
+    public function getType()
+    {
+        return 'Pawn'; // Updated to Pawn because this is the orignal piece type
+        // maybe I should rename the whole class later
+    }
+
     public function getColor() {
         return $this->color;
     }
@@ -37,10 +43,7 @@ class Piece {
     public function getIcon() {
         $colorPrefix = $this->color === 'white' ? 'White' : 'Black';
         $pieceType = ucfirst(strtolower(get_class($this)));
-
-        // Assuming the images are stored in htdocs/images
         $iconPath = "/images/{$colorPrefix}{$pieceType}.svg"; // Updated path
-
         return $iconPath;
     }
 }
