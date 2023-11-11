@@ -14,9 +14,10 @@ document.addEventListener('DOMContentLoaded', function () {
             // Get the row and column of the clicked square
             const row = square.getAttribute('data-row');
             const col = square.getAttribute('data-col');
+            const piece = square.getAttribute('data-piece');
 
-            // Log the row and column to the console
-            console.log(`Clicked square at row ${row}, column ${col}`);
+            // Log the row, column, and piece to the console
+            console.log(`Clicked square at row ${row}, column ${col}, piece ${piece}`);
         }
     });
 });

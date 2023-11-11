@@ -52,12 +52,11 @@ class Chessboard
         $this->squares[$xPosition][$yPosition] = $square;
     }
 
-    public function displayBoard()
-    {
+    public function displayBoard(){
         echo '<div id="chessboard-container" class="justify-center items-center p-3">';
         echo '<div class="bg-gray-100 rounded-md mr-9">';
         echo '<table class="table-auto border-collapse w-full">';
-
+    
         // Display column labels
         echo '<tr>';
         echo '<td></td>'; // Empty cell in the top-left corner
@@ -65,31 +64,32 @@ class Chessboard
             echo '<td class="w-10 text-center">' . $col . '</td>';
         }
         echo '</tr>';
-
+    
         for ($row = 1; $row <= 8; $row++) {
             echo '<tr>';
-
+    
             // Display row label
             echo '<td class="w-10 text-center">' . $row . '</td>';
-
+    
             for ($col = 'A'; $col <= 'H'; $col++) {
                 $square = $this->squares[$col][$row];
                 $color = ((ord($col) - ord('A') + $row) % 2 == 0) ? 'bg-gray-200' : 'bg-gray-400';
-
-                // Add data-row and data-col attributes to each square
-                echo '<td class="w-10 h-10 ' . $color . '" data-row="' . $row . '" data-col="' . $col . '">';
-
+    
+                // Add data-row, data-col, and data-piece attributes to each square
                 $piece = $this->getPieceAtSquare($square);
                 if ($piece) {
+                    echo '<td class="w-10 h-10 ' . $color . '" data-row="' . $row . '" data-col="' . $col . '" data-piece="' . get_class($piece) . '">';
                     echo '<img src="' . $piece->getIcon() . '" alt="" class="w-full h-full">';
+                } else {
+                    echo '<td class="w-10 h-10 ' . $color . '" data-row="' . $row . '" data-col="' . $col . '">';
                 }
-
+    
                 echo '</td>';
             }
-
+    
             echo '</tr>';
         }
-
+    
         echo '</table>';
         echo '</div>';
         echo '</div>';
