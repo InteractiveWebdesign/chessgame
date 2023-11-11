@@ -61,14 +61,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submitPlayerTwoName']
     ?>
 </div>
 
+
+
+
 <!-- Chessboard and Moves Column -->
 <div class="flex flex-col items-center justify-center w-4/5 p-4">
-<div id="moveLog" class="bg-blue-800 text-white flex flex-col items-center justify-center w-full p-4 rounded-t-lg">
+    <div id="moveLog" class="bg-blue-800 text-white flex flex-col items-center justify-center w-full p-4 rounded-t-lg">
         <?php
         // Fake commentary about moves (replace with actual move log)
         $moveLogEntries = [
             'I want game control here, who turn is it?',
-
             // ... add more entries as needed
         ];
 
@@ -77,14 +79,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submitPlayerTwoName']
         }
         ?>
     </div>
-    
-        
-       
 
-    <?php
-    // Display the chessboard
-    $chessboard->displayBoard();
-    ?>
+     <!-- Chessboard Container -->
+     <div id="chessboard-container" class="w-full mx-auto">
+        <?php
+        // Display the chessboard
+        $chessboard->displayBoard();
+        ?>
+    </div>
 
     <!-- Move Log -->
     <div id="moveLog" class="bg-black text-white flex flex-col items-center justify-center w-full p-4 rounded-t-lg">

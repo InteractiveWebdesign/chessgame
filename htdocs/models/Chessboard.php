@@ -54,7 +54,7 @@ class Chessboard
 
     public function displayBoard()
     {
-        echo '<div class="flex justify-center items-center p-3">';
+        echo '<div id="chessboard" class="justify-center items-center p-3">';
         echo '<div class="bg-gray-100 rounded-md">';
         echo '<table class="table-auto border-collapse w-full">';
 
@@ -67,31 +67,32 @@ class Chessboard
         echo '</tr>';
 
         for ($row = 1; $row <= 8; $row++) {
-        echo '<tr>';
+            echo '<tr>';
 
-        // Display row label
-        echo '<td class="w-10 text-center">' . $row . '</td>';
+            // Display row label
+            echo '<td class="w-10 text-center">' . $row . '</td>';
 
-        for ($col = 'A'; $col <= 'H'; $col++) {
-        $square = $this->squares[$col][$row];
-        $color = ((ord($col) - ord('A') + $row) % 2 == 0) ? 'bg-gray-200' : 'bg-gray-400';
+            for ($col = 'A'; $col <= 'H'; $col++) {
+                $square = $this->squares[$col][$row];
+                $color = ((ord($col) - ord('A') + $row) % 2 == 0) ? 'bg-gray-200' : 'bg-gray-400';
 
-        echo '<td class="w-10 h-10 ' . $color . '">';
+                // Add data-row and data-col attributes to each square
+                echo '<td class="w-10 h-10 ' . $color . '" data-row="' . $row . '" data-col="' . $col . '">';
 
-        $piece = $this->getPieceAtSquare($square);
-        if ($piece) {
-            echo '<img src="' . $piece->getIcon() . '" alt="" class="w-full h-full">';
+                $piece = $this->getPieceAtSquare($square);
+                if ($piece) {
+                    echo '<img src="' . $piece->getIcon() . '" alt="" class="w-full h-full">';
+                }
+
+                echo '</td>';
+            }
+
+            echo '</tr>';
         }
 
-        echo '</td>';
-        }
-
-        echo '</tr>';
-    }
-
-    echo '</table>';
-    echo '</div>';
-    echo '</div>';
+        echo '</table>';
+        echo '</div>';
+        echo '</div>';
     }
 
 
@@ -168,6 +169,103 @@ class Chessboard
 
         echo '</tbody>';
         echo '</table>';
+    }
+
+    public function isValidMove($startX, $startY, $endX, $endY)
+    {
+        // Check if the move is within the bounds of the board
+        if ($this->isOutOfBounds($startX, $startY) || $this->isOutOfBounds($endX, $endY)) {
+            return false;
+        }
+
+        // Check if there is a piece at the starting position
+        $startSquare = $this->squares[$startX][$startY];
+        $piece = $startSquare->getPiece();
+        if (!$piece) {
+            return false;
+        }
+
+        // Differentiate between piece types
+        switch ($piece->getType()) {
+            case 'Pawn':
+                return $this->isValidPawnMove($piece, $startX, $startY, $endX, $endY);
+            // Add cases for other piece types (Rook, Knight, Bishop, Queen, King) as needed
+            default:
+                return false;
+        }
+    }
+
+    // Separate function to validate pawn moves
+    private function isValidPawnMove($piece, $startX, $startY, $endX, $endY)
+    {
+        // Implement your specific pawn movement logic here
+        // For example, you might check if the move is one square forward
+        if ($piece->getColor() === 'white') {
+            if ($endY == $startY - 1 && $endX == $startX) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            // Implement the logic for black pawn movement
+            // For example, black pawns move one square forward, similar to white pawns
+            if ($endY == $startY + 1 && $endX == $startX) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
+
+    public function performMove($startX, $startY, $endX, $endY)
+    {
+
+        // TODO: Implement the logic to perform the move
+        // This will involve updating the internal state of the chessboard
+        // For example, move the piece from the start position to the end position
+        // You may also need to handle captures, check, and checkmate scenarios
+
+        // Validate the move
+        if (!$this->isValidMove($startX, $startY, $endX, $endY)) {
+            // Handle invalid move (perhaps throw an exception or log an error)
+            return;
+        }
+
+        // Get the piece at the starting position
+        $startSquare = $this->squares[$startX][$startY];
+        $piece = $startSquare->getPiece();
+
+        // Move the piece to the destination position
+        $endSquare = $this->squares[$endX][$endY];
+        $endSquare->setPiece($piece);
+
+        // Clear the starting position
+        $startSquare->setPiece(null);
+    }
+
+    public function getGameState()
+    {
+        $gameState = [];
+
+        foreach ($this->squares as $col => $columns) {
+            foreach ($columns as $row => $square) {
+                $piece = $square->getPiece();
+                $gameState['squares'][$col][$row] = [
+                    'piece' => $piece ? [
+                        'name' => $piece->getName(),
+                        'color' => $piece->getColor(),
+                        'icon' => $piece->getIcon(),
+                    ] : null,
+                ];
+            }
+        }
+
+        return $gameState;
+    }
+
+    private function isOutOfBounds($x, $y)
+    {
+        return !isset($this->squares[$x][$y]);
     }
 }
 

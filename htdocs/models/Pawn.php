@@ -13,18 +13,33 @@ class Pawn extends Piece {
     }
 
     public function move($newRow, $newCol) {
-        // Implement your specific pawn movement logic here
-        // For example, you might check if the move is one square forward
-        if ($this->getColor() === 'white') {
-            if ($newRow == $this->getRow() - 1 && $newCol == $this->getCol()) {
-                parent::move($newRow, $newCol);
-            } else {
-                throw new Exception("Invalid move for the pawn.");
-            }
+        // Check if the move is valid for a pawn
+        if ($this->isValidMove($newRow, $newCol)) {
+            parent::move($newRow, $newCol);
         } else {
-            // Implement the logic for black pawn movement
-            // ...
+            throw new Exception("Invalid move for the pawn.");
         }
+    }
+
+    public function isValidMove($newRow, $newCol)
+    {
+        // Implement your specific pawn movement logic here
+        $currentRow = $this->getRow();
+        $currentCol = $this->getCol();
+
+        // Pawns can move forward by one square
+        $forwardDirection = ($this->getColor() === 'white') ? -1 : 1;
+        $rowDiff = $newRow - $currentRow;
+        $colDiff = abs($newCol - $currentCol);
+
+        // Check if the move is one square forward
+        if ($rowDiff == $forwardDirection && $colDiff == 0) {
+            return true;
+        }
+
+        // Implement additional logic for special moves, capturing, etc.
+
+        return false;
     }
 
     // Additional methods and overrides specific to the Pawn class
