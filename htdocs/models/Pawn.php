@@ -13,9 +13,14 @@ class Pawn extends Piece {
     }
 
     public function move($newRow, $newCol) {
+        // Add logging to check if the move method is being called
+        error_log("Piece moved to $newCol$newRow");
+
         // Check if the move is valid for a pawn
         if ($this->isValidMove($newRow, $newCol)) {
             parent::move($newRow, $newCol);
+            // Add logging to check the final position
+            error_log("Piece now at $newCol$newRow");
         } else {
             throw new Exception("Invalid move for the pawn.");
         }

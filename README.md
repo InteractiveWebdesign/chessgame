@@ -2,6 +2,9 @@
 
 <h1 align="center">Chess Board</h1>
 
+# Ik loop nu vooral aan dat ik geen debug info krijg over mijn squares
+
+
 ### Goals
 
 I want to use the OOP principles Encapsulation, Inheritance and Polymorphism in this project.Also I want to use the MVC model to organize the code in this project.

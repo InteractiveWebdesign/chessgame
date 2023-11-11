@@ -54,8 +54,8 @@ class Chessboard
 
     public function displayBoard()
     {
-        echo '<div id="chessboard" class="justify-center items-center p-3">';
-        echo '<div class="bg-gray-100 rounded-md">';
+        echo '<div id="chessboard-container" class="justify-center items-center p-3">';
+        echo '<div class="bg-gray-100 rounded-md mr-9">';
         echo '<table class="table-auto border-collapse w-full">';
 
         // Display column labels

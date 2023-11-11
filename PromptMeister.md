@@ -3,6 +3,9 @@
 I have start building a chess game. I now have a board and want to start working on positions and on the logging from pawn names and there positions in the UI. I can give all the files you want I will start with the structure of my project that is based on this and I use PHP and OOP as much as possible. 
 
 
+# prompt
+Can you help me debug my chess game? After that I want to try to create actuall movement for all the pieces on the board. My project is based on PHP Js and the MVC model and I try to use object oriented programming (ooP). Here is my structure:
+
 ## project structure
 # Create project folder file structure with this command:
 Get-ChildItem -Recurse C:\localbox\data\www\chessgame | Where-Object { $_.FullName -notmatch '\\\.git\\' } | Format-Table FullName
