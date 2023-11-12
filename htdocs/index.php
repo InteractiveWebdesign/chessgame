@@ -45,10 +45,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submitPlayerTwoName']
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <title>Chessboard</title>
 </head>
-<body class="flex flex-row justify-center h-screen bg-gray-100">
+<body class="mt-48 flex flex-row justify-center h-screen bg-gray-100">
 
 <!-- Player One Column -->
-<div class="flex flex-col items-center justify-center w-1/5 p-4">
+<div class="mt-24 flex flex-col items-center justify-center w-1/5 p-4">
     <h2 class="text-lg font-bold mb-2"><?php echo isset($_SESSION['playerOneName']) ? $_SESSION['playerOneName'] : 'Player One'; ?></h2>
     <form method="post" action="">
         <input type="text" name="playerOneName" id="playerOneName" class="mb-2 p-2 border rounded" placeholder="Enter name" value="<?php echo isset($_SESSION['playerOneName']) ? $_SESSION['playerOneName'] : ''; ?>">
@@ -81,7 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submitPlayerTwoName']
     </div>
 
      <!-- Chessboard Container -->
-     <div id="chessboard-container" class="w-full mx-auto">
+     <div id="chessboard-container" class="mt-12 w-full mx-auto">
         <?php
         // Display the chessboard
         $chessboard->displayBoard();
@@ -89,7 +89,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submitPlayerTwoName']
     </div>
 
     <!-- Move Log -->
-    <div id="moveLog" class="bg-black text-white flex flex-col items-center justify-center w-full p-4 rounded-t-lg">
+    <div id="moveLog" class="bg-black text-white flex flex-col items-center justify-center w-full p-4 rounded-b-lg">
         <?php
         // Fake commentary about moves (replace with actual move log)
         $moveLogEntries = [
@@ -107,7 +107,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submitPlayerTwoName']
 </div>
 
 <!-- Player Two Column -->
-<div class="flex flex-col items-center justify-center w-1/5 p-4">
+<div class="mt-24 flex flex-col items-center justify-center w-1/5 p-4">
     <h2 class="text-lg font-bold mb-2"><?php echo isset($_SESSION['playerTwoName']) ? $_SESSION['playerTwoName'] : 'Player Two'; ?></h2>
     <form method="post" action="">
         <input type="text" name="playerTwoName" id="playerTwoName" class="mb-2 p-2 border rounded" placeholder="Enter name" value="<?php echo isset($_SESSION['playerTwoName']) ? $_SESSION['playerTwoName'] : ''; ?>">
