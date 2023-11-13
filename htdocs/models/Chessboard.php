@@ -8,7 +8,7 @@ class Chessboard
 
     public function __construct()
     {
-        $this->resetBoard();
+       $this->resetBoard();
     }
 
     private function initializeSquares()
@@ -36,10 +36,37 @@ class Chessboard
         $initialPieces = [
             'A2' => new Pawn('white'),
             'B2' => new Pawn('white'),
-            // ... Add other pieces as needed
+            'C2' => new Pawn('white'),
+            'D2' => new Pawn('white'),
+            'E2' => new Pawn('white'),
+            'F2' => new Pawn('white'),
+            'G2' => new Pawn('white'),
+            'H2' => new Pawn('white'),
+            'A1' => new Rook('white'),
+            'B1' => new Knight('white'),
+            'C1' => new Bishop('white'),
+            'D1' => new Queen('white'),
+            'E1' => new King('white'),
+            'F1' => new Bishop('white'),
+            'G1' => new Knight('white'),
+            'H1' => new Rook('white'),
+            // Black player pieces
             'A7' => new Pawn('black'),
             'B7' => new Pawn('black'),
-            // ... Add other pieces as needed
+            'C7' => new Pawn('black'),
+            'D7' => new Pawn('black'),
+            'E7' => new Pawn('black'),
+            'F7' => new Pawn('black'),
+            'G7' => new Pawn('black'),
+            'H7' => new Pawn('black'),
+            'A8' => new Rook('black'),
+            'B8' => new Knight('black'),
+            'C8' => new Bishop('black'),
+            'D8' => new Queen('black'),
+            'E8' => new King('black'),
+            'F8' => new Bishop('black'),
+            'G8' => new Knight('black'),
+            'H8' => new Rook('black'),
         ];
 
         $key = $xPosition . $yPosition;

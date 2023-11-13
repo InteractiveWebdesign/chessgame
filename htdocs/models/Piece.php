@@ -19,8 +19,7 @@ class Piece {
 
     public function getType()
     {
-        return 'Pawn'; // Updated to Pawn because this is the orignal piece type
-        // maybe I should rename the whole class later
+        return get_class($this);
     }
 
     public function getColor() {
