@@ -2,7 +2,7 @@
 
 <h1 align="center">Chess Board</h1>
 
-# Ik loop nu vooral aan dat ik geen debug info krijg over mijn squares
+
 
 
 ### Goals
