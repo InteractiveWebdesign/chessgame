@@ -44,27 +44,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submitPlayerTwoName']
 
 <!-- Main Content -->
 <div class="flex flex-row justify-center min-h-screen">
-<!-- <div class="mt- flex flex-row justify-center h-screen bg-gray-100"> -->
 
 <!-- Player One Column -->
-<div class="flex flex-col items-center justify-center w-1/5 p-4">
-    <h2 class="text-lg font-bold mb-2"><?php echo isset($_SESSION['playerOneName']) ? $_SESSION['playerOneName'] : 'Player One'; ?></h2>
-    <form method="post" action="">
-        <input type="text" name="playerOneName" id="playerOneName" class="mb-2 p-2 border rounded" placeholder="Enter name" value="<?php echo isset($_SESSION['playerOneName']) ? $_SESSION['playerOneName'] : ''; ?>">
-        <button type="submit" name="submitPlayerOneName" class="bg-blue-500 text-white px-4 py-2 rounded">Save</button>
-    </form>
-    <!-- Additional content for player one if needed -->
-    <?php 
-    // Display piece positions for Player One
-    $chessboard->displayPiecePositionsByPlayer('white');
-    ?>
+<div class="flex flex-col items-center justify-center w-1/5 ml-2">
+    <div class="max-w-screen-sm w-full">
+        <h2 class="text-lg font-bold mb-2">
+            <?php echo isset($_SESSION['playerOneName']) ? $_SESSION['playerOneName'] : 'Player One'; ?>
+        </h2>
+        <form method="post" action="" class="flex items-stretch justify-between w-full">
+            <input type="text" name="playerOneName" id="playerOneName" class="w-3/4 p-2 border rounded" placeholder="Enter name" value="<?php echo isset($_SESSION['playerOneName']) ? $_SESSION['playerOneName'] : ''; ?>">
+            <button type="submit" name="submitPlayerOneName" class="w-1/4 bg-blue-500 text-white text-center p-2 rounded">Save</button>
+        </form>
+        <!-- Additional content for player one if needed -->
+        <?php $chessboard->displayPiecePositionsByPlayer('white'); ?>
+    </div>
 </div>
 
 
 
 
+
+
 <!-- Chessboard and Moves Column -->
-<div class="flex flex-col items-center justify-center w-4/5 p-4">
+<div class="flex flex-col items-center w-4/5 p-4">
     <div id="moveLog" class="bg-blue-800 text-white flex flex-col items-center justify-center w-full p-4 rounded-t-lg">
         <?php
         // Fake commentary about moves (replace with actual move log)
@@ -105,19 +107,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submitPlayerTwoName']
     </div>
 </div>
 
-<!-- Player Two Column -->
-<div class="flex flex-col items-center justify-center w-1/5 p-4">
-    <h2 class="text-lg font-bold mb-2"><?php echo isset($_SESSION['playerTwoName']) ? $_SESSION['playerTwoName'] : 'Player Two'; ?></h2>
-    <form method="post" action="">
-        <input type="text" name="playerTwoName" id="playerTwoName" class="mb-2 p-2 border rounded" placeholder="Enter name" value="<?php echo isset($_SESSION['playerTwoName']) ? $_SESSION['playerTwoName'] : ''; ?>">
-        <button type="submit" name="submitPlayerTwoName" class="bg-blue-500 text-white px-4 py-2 rounded">Save</button>
-    </form>
-    <!-- Additional content for player two if needed -->
-    <?php 
-    // Display piece positions for Player Two
-    $chessboard->displayPiecePositionsByPlayer('black');
-    ?>
+<!-- Player Two Column --->
+<div class="flex flex-col items-center justify-center w-1/5 ml-2 mr-2">
+    <div class="max-w-screen-sm w-full">
+        <h2 class="text-lg font-bold mb-2">
+            <?php echo isset($_SESSION['playerTwoName']) ? $_SESSION['playerTwoName'] : 'Player Two'; ?>
+        </h2>
+        <form method="post" action="" class="flex items-stretch justify-between w-full">
+            <input type="text" name="playerTwoName" id="playerTwoName" class="w-3/4 p-2 border rounded" placeholder="Enter name" value="<?php echo isset($_SESSION['playerTwoName']) ? $_SESSION['playerTwoName'] : ''; ?>">
+            <button type="submit" name="submitPlayerTwoName" class="w-1/4 bg-blue-500 text-white text-center p-2 rounded">Save</button>
+        </form>
+        <!-- Additional content for player two if needed -->
+        <?php $chessboard->displayPiecePositionsByPlayer('black'); ?>
+    </div>
 </div>
+
+
 
 </div>
 
