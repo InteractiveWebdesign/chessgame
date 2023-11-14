@@ -2,7 +2,13 @@
 // Start the session
 session_start();
 
-// Game relared classes need to autoload later
+//  need to autoload later
+
+// Game relared Controllers
+require_once 'controllers/PlayerController.php';
+require_once 'controllers/GameController.php';
+
+// Models
 require_once 'models/Chessboard.php';
 require_once 'models/Piece.php';
 require_once 'models/Pawn.php';
@@ -14,6 +20,7 @@ require_once 'models/King.php';
 
 // Utility classes
 require_once 'SessionManager.php';
+
 
 // Components from /view
 require_once 'views/header.php';
@@ -33,6 +40,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submitPlayerTwoName']
     $_SESSION['playerTwoName'] = $_POST['playerTwoName'];
 }
 
+// Create PlayerController instances
+$playerOneController = new PlayerController($_SESSION['playerOneName'] ?? 'Player One');
+$playerTwoController = new PlayerController($_SESSION['playerTwoName'] ?? 'Player Two');
+
+// Create a GameController instance
+$gameController = new GameController([$playerOneController, $playerTwoController]);
+
 // Debugging: Print session information
 // echo '<pre>';
 // print_r($_SESSION);
@@ -44,6 +58,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submitPlayerTwoName']
 
 <!-- Main Content -->
 <div class="flex flex-row justify-center min-h-screen">
+
+
 
     <!-- Player One Column -->
     <div class="flex flex-col items-center justify-center w-1/5 ml-2">
@@ -60,9 +76,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submitPlayerTwoName']
         </div>
     </div>
     <!-- Chessboard and Moves Column -->
+
     <div class="flex flex-col items-center w-4/5 p-4">
-        <div id="moveLog" class="bg-blue-800 text-white flex flex-col items-center justify-center w-full p-4 rounded-t-lg">
+    <div id="moveLog" class="bg-blue-800 text-white flex flex-col items-center justify-center w-full p-4 rounded-t-lg">
+        <p id="current-player" class="text-lg text-red-500"></p>
             <?php
+            
+            $currentPlayerController = $gameController->getCurrentPlayerController();
+            if ($currentPlayerController->isTurn()) {
+                echo $currentPlayerController->getName() . "'s turn";
+            } 
+
+
             // Fake commentary about moves (replace with actual move log)
             $moveLogEntries = [
                 'I want game control here, who turn is it?',

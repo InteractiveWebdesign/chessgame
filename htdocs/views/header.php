@@ -18,7 +18,8 @@
 <header class="fixed top-0 left-0 right-0 bg-blue-900 p-4 text-white">
     <div class="container mx-auto flex justify-between items-center">
         <h1 style="text-align: center;" class="text-3xl font-bold">Chess Game</h1>
-        <button id="startButton" class="bg-green-500 text-white px-4 py-2 rounded">Start Game</button>
+        <button id="start-button" class="px-4 py-2 text-white bg-green-500 rounded hover:bg-blue-600">Start</button>
+        <button id="end-turn-button" class="px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-600">End Turn</button>
     </div>
 </header>
 
