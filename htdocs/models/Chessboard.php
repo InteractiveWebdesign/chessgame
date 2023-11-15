@@ -222,26 +222,60 @@ class Chessboard
         }
     }
 
-    // Separate function to validate pawn moves
+    public function makeMove($from, $to) {
+        // Implement the logic to make a move on the chessboard
+        // This might include updating the state of the squares and handling captures, etc.
+
+        // For demonstration purposes, let's assume you have a method setPieceAtSquare
+        // that sets a piece at a specific square
+        $piece = $this->getPieceAtSquare($from);
+        $this->setPieceAtSquare($to, $piece);
+        $this->setPieceAtSquare($from, null);
+
+        // Add any additional logic based on your game rules
+
+        // Example: Check if a piece is captured at the destination square
+        $capturedPiece = $this->getPieceAtSquare($to);
+        if ($capturedPiece !== null) {
+            // Handle the capture, perhaps by removing the captured piece from the game
+        }
+    }
+
+    private function setPieceAtSquare($square, $piece) {
+        // Implement logic to set a piece at a specific square
+        // This might involve accessing your squares array or another data structure
+        // Update the state of the chessboard
+    }
+
     private function isValidPawnMove($piece, $startX, $startY, $endX, $endY)
     {
-        // Implement your specific pawn movement logic here
-        // For example, you might check if the move is one square forward
-        if ($piece->getColor() === 'white') {
-            if ($endY == $startY - 1 && $endX == $startX) {
-                return true;
-            } else {
-                return false;
-            }
-        } else {
-            // Implement the logic for black pawn movement
-            // For example, black pawns move one square forward, similar to white pawns
-            if ($endY == $startY + 1 && $endX == $startX) {
-                return true;
-            } else {
-                return false;
-            }
+        $direction = ($piece->getColor() === 'white') ? -1 : 1;
+    
+        // Check if it's a valid one-step move forward
+        if ($endX == $startX && $endY == $startY + $direction) {
+            return true;
         }
+    
+        // Check if it's a valid two-step move forward (only on the first move)
+        if (
+            $piece->getMoveCount() === 0
+            && $endX == $startX
+            && $endY == $startY + 2 * $direction
+            && !$this->squares[$startX][$startY + $direction]->getPiece()
+        ) {
+            return true;
+        }
+    
+        // Check if it's a valid capture move
+        if (abs($endX - $startX) == 1 && $endY == $startY + $direction) {
+            $endSquare = $this->squares[$endX][$endY];
+            $capturedPiece = $endSquare->getPiece();
+    
+            // Ensure that the destination square is occupied by an enemy piece
+            return $capturedPiece && $capturedPiece->getColor() !== $piece->getColor();
+        }
+    
+        return false;
     }
 
     public function performMove($startX, $startY, $endX, $endY)

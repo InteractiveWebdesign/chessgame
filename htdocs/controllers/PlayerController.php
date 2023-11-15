@@ -1,6 +1,5 @@
 <?php
 
-# PlayerController.php
 # This is the controller for the Player model; it will keep track of the player's information and update the database accordingly
 # It also has a turn function that will be called when the player's turn is up
 

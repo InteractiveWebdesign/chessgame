@@ -1,22 +1,61 @@
 <?php
 
-class GameController {
-    private $playerControllers = [];
-    private $currentPlayerIndex = 0;
+/* 
+This class will manage the flow of the game
+So it will handle turns, validating moves, and updating the game state.
+*/
 
-    public function __construct($playerControllers) {
-        $this->playerControllers = $playerControllers;
-        $this->playerControllers[0]->startTurn(); // it's the first player's turn at the beginning
+class GameController {
+    private $players;
+    private $currentPlayerIndex;
+    private $gameState;
+
+    public function __construct(array $players) {
+        $this->players = $players;
+        $this->currentPlayerIndex = 0; // Set the initial player
+        $this->gameState = new ChessBoard(); // Assuming ChessBoard is your game state class
     }
 
+    // public function __construct() {
+    //     // Initialize game state and set the starting player
+    //     $this->gameState = new ChessBoard(); // Assuming ChessBoard is your game state class
+    //     $this->currentPlayer = new Player('Player1', 'white');
+    // }
 
     public function getCurrentPlayerController() {
-        return $this->playerControllers[$this->currentPlayerIndex];
+        return $this->players[$this->currentPlayerIndex];
     }
 
-    public function nextTurn() {
-        $this->getCurrentPlayerController()->endTurn(); // end the current player's turn
-        $this->currentPlayerIndex = ($this->currentPlayerIndex + 1) % count($this->playerControllers);
-        $this->getCurrentPlayerController()->startTurn(); // start the next player's turn
+    public function makeMove($from, $to) {
+        // Validate the move
+        if ($this->isValidMove($from, $to)) {
+            // Update the game state
+            $this->gameState->makeMove($from, $to);
+
+            // Switch to the next player's turn
+            $this->switchPlayer();
+        }
+    }
+
+    public function getCurrentPlayer() {
+        return $this->players[$this->currentPlayerIndex];
+    }
+
+    public function getGameState() {
+        return $this->gameState;
+    }
+
+    private function isValidMove($from, $to) {
+        // Implement move validation logic
+        // Check if the move is valid for the current player
+        // Check if the move is valid on the current board state
+        // ...
+
+        return true; // Return true for now, replace with actual logic
+    }
+
+    private function switchPlayer() {
+        // Switch to the next player's turn
+        $this->currentPlayerIndex = ($this->currentPlayerIndex + 1) % count($this->players);
     }
 }

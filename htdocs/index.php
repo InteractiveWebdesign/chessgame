@@ -101,12 +101,18 @@ $gameController = new GameController([$playerOneController, $playerTwoController
         </div>
 
         <!-- Chessboard Container -->
-        <div id="chessboard-container" class="w-full mx-auto">
-            <?php
-            // Display the chessboard
-            $chessboard->displayBoard();
-            ?>
-        </div>
+        <!-- <div id="chessboard-container" class="w-full mx-auto"> -->
+        <!-- Chessboard Container -->
+<div id="chessboard-container" class="w-full mx-auto">
+    <?php
+    // Obtain the game state from the GameController
+    $gameState = $gameController->getGameState();
+
+    // Display the chessboard
+    $gameState->displayBoard();
+    ?>
+</div>
+
 
         <!-- Move Log -->
         <div id="moveLog" class="bg-black text-white flex flex-col items-center justify-center w-full p-4 rounded-b-lg">
@@ -141,6 +147,6 @@ $gameController = new GameController([$playerOneController, $playerTwoController
         </div>
     </div>
 </div>
-<script src="scripts.js"></script>
+<!-- <script src="scripts.js"></script> -->
 </body>
 </html>
